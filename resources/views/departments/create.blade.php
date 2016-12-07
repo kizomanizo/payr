@@ -14,34 +14,30 @@
     </div>
 @endif
 
-<form action="{{ url('departments/editdepartment') }}/{{ $department->id }}" role="form" method="POST">
+<form action="{{ url('departments') }}" role="form" method="post">
 	{{ csrf_field() }}
 	<div class="form-group row">
-	<fieldset disabled="">
-		<label for="company" class="col-sm-2 form-control-label">Company</label>
+		<label for="name" class="col-sm-2 form-control-label">Company</label>
 		<div class="col-sm-10">
 			<select id="company" name="company" class="form-control">
-					<option value="{{ $department->company_id }}" selected="">{{ $department->company->name }}</option>
+				@foreach($companies as $company)
+					<option value="{{ $company->id }}">{{ $company->name }}</option>
+				@endforeach
 			</select>
 		</div>
-	</fieldset>
 	</div>
 	<div class="form-group row">
 		<label for="name" class="col-sm-2 form-control-label">Dept Name</label>
 		<div class="col-sm-10">
-			<input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ $department->name }}">
+			<input type="text" class="form-control" id="name" name="name" placeholder="Name">
 		</div>
 	</div>
 	<div class="form-group row">
 		<label for="submit" class="col-sm-2 form-control-label"></label>
 		<div class="col-sm-10">
-		<button type="submit" class="btn btn-primary" id="submit">Edit Department</button>
+		<button type="submit" class="btn btn-primary" id="submit">Add Department</button>
 		</div>
 	</div>
-	<input type="hidden" name="user" id="user" value="{{ $department->user_id }}">
-	<input type="hidden" name="created_at" id="created_at" value="{{ $department->created_at }}">
-	<input type="hidden" name="id" id="id" value="{{ $department->id }}">
-	{{ method_field('PUT') }}
 </form>
 <hr>
 @endsection

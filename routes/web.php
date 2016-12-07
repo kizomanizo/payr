@@ -20,27 +20,18 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 // Companies routes
-Route::get('companies/list-companies', 'CompanyController@index')->name('listcompanies');
-Route::get('companies/add-companies', 'CompanyController@create')->name('createcompany');
-Route::post('companies/addcompany', 'CompanyController@store')->name('storecompany');
-Route::get('companies/edit-companies/{id}', 'CompanyController@edit')->name('editcompany');
-Route::put('companies/editcompany/{id}', 'CompanyController@update')->name('updatecompany');
-Route::get('companies/deletecompany/{id}', 'CompanyController@delete')->name('deletecompany');
+Route::resource('companies', 'CompanyController');
 
 // Departments routes
-Route::get('departments/list-departments', 'DepartmentController@index');
-Route::get('departments/list-departments/{id}', 'DepartmentController@department');
-Route::get('departments/add-departments', 'DepartmentController@create');
-Route::post('departments/adddepartment', 'DepartmentController@store');
-Route::get('departments/edit-departments/{id}', 'DepartmentController@edit');
-Route::put('departments/editdepartment/{id}', 'DepartmentController@update');
-Route::get('departments/deletedepartment/{id}', 'DepartmentController@delete');
+Route::resource('departments', 'DepartmentController');
 
 // Titles routes
-Route::get('titles/list-titles', 'TitleController@index');
-Route::get('titles/list-titles/{id}', 'TitleController@title');
-Route::get('titles/add-titles', 'TitleController@create');
-Route::post('titles/addtitle', 'TitleController@store');
-Route::get('titles/edit-titles/{id}', 'TitleController@edit');
-Route::put('titles/edittitle/{id}', 'TitleController@update');
-Route::get('titles/deletetitle/{id}', 'TitleController@delete');
+Route::resource('titles', 'TitleController');
+
+// Employees routes
+Route::resource('employees', 'EmployeeController');
+Route::get('employees/add-employees/ajax-state', 'EmployeeController@ajaxstate');
+Route::get('employees/add-employees/ajax-department', 'EmployeeController@ajaxdepartment');
+
+//Pensions routes
+Route::resource('pensions', 'PensionController');

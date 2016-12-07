@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
+    protected $fillabe = [
+    'name', 'company_id', 'user_id'
+    ];
+
     /**
      * Get the company in which the department is.
      */

@@ -14,7 +14,7 @@
     </div>
 @endif
 
-<form action="{{ url('companies/editcompany') }}/{{ $company->id }}" role="form" method="POST">
+<form action="{{ url('companies') }}/{{ $company->id }}" role="form" method="POST">
 	{{ csrf_field() }}
 	<div class="form-group row">
 		<label for="name" class="col-sm-2 form-control-label">Name</label>

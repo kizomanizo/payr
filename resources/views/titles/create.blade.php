@@ -14,13 +14,13 @@
     </div>
 @endif
 
-<form action="{{ url('titles/addtitle') }}" role="form" method="POST">
+<form action="{{ url('titles') }}" role="form" method="POST">
 	{{ csrf_field() }}
 	<div class="form-group row">
 		<label for="name" class="col-sm-2 form-control-label">Department</label>
 		<div class="col-sm-10">
 			<select id="department" name="department" class="form-control">
-				@foreach($department as $department)
+				@foreach($departments as $department)
 					<option value="{{ $department->id }}">{{ $department->name }}</option>
 				@endforeach
 			</select>
@@ -44,7 +44,6 @@
 		<button type="submit" class="btn btn-primary" id="submit">Add title</button>
 		</div>
 	</div>
-	<input type="hidden" name="user" id="user" value="{{ Auth::user()->id }}">
 </form>
 <hr>
 @endsection
